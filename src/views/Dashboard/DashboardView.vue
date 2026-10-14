@@ -7,6 +7,28 @@
       </p>
     </div>
 
+    <!-- Weather Banner -->
+    <v-alert
+      v-if="weather.rain_expected"
+      type="warning"
+      variant="tonal"
+      closable
+      class="mb-4"
+      icon="mdi-weather-pouring"
+    >
+      {{ weather.banner_message }}
+    </v-alert>
+
+    <v-alert
+      v-else-if="weather.current_temp !== null"
+      type="info"
+      variant="tonal"
+      class="mb-4"
+      icon="mdi-weather-partly-cloudy"
+    >
+      🌤️ Current weather in Butuan City: <strong>{{ weather.current_temp }}°C</strong>, {{ weather.current_description }}. No collection delays expected.
+    </v-alert>
+
     <!-- Stat Cards -->
     <v-row class="mb-4">
       <v-col cols="12" sm="6" md="3">
@@ -107,6 +129,7 @@ import { fetchMissedPickups } from '@/services/missedPickupService.js'
 import { fetchPuroks } from '@/services/purokService.js'
 import { fetchCollectionLogs } from '@/services/collectionLogService.js'
 import { useWasteTypeColors } from '@/composables/useWasteTypeColors.js'
+import { checkWeather } from '@/services/weatherService.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -117,6 +140,7 @@ const stats = reactive({ total: 0, completed: 0, delayed: 0, skipped: 0 })
 const openReports = ref(0)
 const chartReady = ref(false)
 const chartData = ref({ labels: [], datasets: [] })
+const weather = reactive({ rain_expected: false, rain_probability: 0, current_temp: null, current_description: '', banner_message: null })
 
 const chartOptions = {
   responsive: true,
@@ -129,6 +153,12 @@ onMounted(async () => {
   try {
     // Today's schedules
     todaySchedules.value = await fetchTodaySchedules()
+
+    // Weather check
+    try {
+      const w = await checkWeather()
+      Object.assign(weather, w)
+    } catch (_) { /* weather is optional */ }
 
     // Today's log stats
     const s = await fetchDashboardStats()
