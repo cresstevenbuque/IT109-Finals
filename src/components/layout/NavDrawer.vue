@@ -71,7 +71,7 @@ const navItems = [
   { to: '/collector/today', icon: 'mdi-clipboard-check', title: "Today's Routes", roles: ['collector'], header: 'My Tasks' },
 
   // Management
-  { to: '/puroks', icon: 'mdi-map-marker-radius', title: 'Puroks', roles: ['admin'], header: 'Management' },
+  { to: '/puroks', icon: 'mdi-map-marker-radius', title: 'Barangays', roles: ['admin'], header: 'Management' },
   { to: '/trucks', icon: 'mdi-truck', title: 'Trucks & Crew', roles: ['admin'] },
   { to: '/routes', icon: 'mdi-routes', title: 'Routes & Stops', roles: ['admin'] },
   { to: '/schedules', icon: 'mdi-calendar-clock', title: 'Schedules', roles: ['admin'] },

@@ -2,14 +2,14 @@
   <v-dialog :modelValue="modelValue" @update:modelValue="$emit('update:modelValue', $event)" max-width="560" persistent>
     <v-card>
       <v-card-title class="text-h6">
-        {{ isEdit ? 'Edit Purok' : 'Add Purok' }}
+        {{ isEdit ? 'Edit Barangay' : 'Add Barangay' }}
       </v-card-title>
 
       <v-card-text>
         <v-form ref="formRef" v-model="valid" @submit.prevent="handleSave">
           <v-text-field
             v-model="form.name"
-            label="Purok Name *"
+            label="Barangay Name *"
             :rules="[rules.required]"
             class="mb-2"
           />
@@ -115,10 +115,10 @@ async function handleSave() {
   try {
     if (isEdit.value) {
       await updatePurok(props.purok.id, form.value)
-      showSnackbar('Purok updated successfully')
+      showSnackbar('Barangay updated successfully')
     } else {
       await createPurok(form.value)
-      showSnackbar('Purok created successfully')
+      showSnackbar('Barangay created successfully')
     }
     emit('saved')
   } catch (err) {

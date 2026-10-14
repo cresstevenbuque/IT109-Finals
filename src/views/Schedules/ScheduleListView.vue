@@ -10,11 +10,8 @@
 
     <!-- Filters -->
     <v-card class="mb-4 pa-4">
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-select v-model="dayFilter" :items="dayOptions" label="Day of Week" clearable hide-details @update:modelValue="loadSchedules" />
-        </v-col>
-        <v-col cols="12" md="4">
+      <v-row align="center">
+        <v-col cols="12" md="6">
           <v-select v-model="wasteFilter" :items="wasteOptions" label="Waste Type" clearable hide-details @update:modelValue="loadSchedules">
             <template #item="{ item, props: p }">
               <v-list-item v-bind="p">
@@ -25,10 +22,10 @@
             </template>
           </v-select>
         </v-col>
-        <v-col cols="12" md="4">
+        <v-col cols="12" md="6">
           <v-btn-toggle v-model="viewMode" density="compact" mandatory class="mt-1">
-            <v-btn value="table" size="small"><v-icon>mdi-table</v-icon></v-btn>
             <v-btn value="calendar" size="small"><v-icon>mdi-calendar</v-icon></v-btn>
+            <v-btn value="table" size="small"><v-icon>mdi-table</v-icon></v-btn>
           </v-btn-toggle>
         </v-col>
       </v-row>
@@ -124,7 +121,6 @@ const { getWasteType, getWasteTypeKeys } = useWasteTypeColors()
 const schedules = ref([])
 const totalCount = ref(0)
 const loading = ref(false)
-const dayFilter = ref(null)
 const wasteFilter = ref(null)
 const page = ref(1)
 const perPage = ref(50)
@@ -155,7 +151,7 @@ const schedulesByDay = computed(() => {
 async function loadSchedules() {
   loading.value = true
   try {
-    const result = await fetchSchedules({ wasteType: wasteFilter.value || '', dayOfWeek: dayFilter.value, page: page.value, perPage: perPage.value })
+    const result = await fetchSchedules({ wasteType: wasteFilter.value || '', page: page.value, perPage: perPage.value })
     schedules.value = result.data
     totalCount.value = result.count
   } catch (err) { showSnackbar(err.message, 'error') }

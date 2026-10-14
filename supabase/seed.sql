@@ -15,16 +15,16 @@
 -- After creating them, run this seed, then update profiles with the correct auth IDs.
 
 -- ============================================================
--- PUROKS (4 barangay zones around Butuan City)
+-- BARANGAYS (4 barangay zones around Butuan City)
 -- ============================================================
 INSERT INTO puroks (id, name, description, center_lat, center_lng) VALUES
-  ('a1000000-0000-0000-0000-000000000001', 'Purok 1 - Libertad', 
+  ('a1000000-0000-0000-0000-000000000001', 'Barangay Libertad', 
    'Downtown area near Butuan City Hall', 8.9475, 125.5406),
-  ('a1000000-0000-0000-0000-000000000002', 'Purok 2 - Rizal', 
+  ('a1000000-0000-0000-0000-000000000002', 'Barangay Rizal', 
    'Commercial district along J.C. Aquino Avenue', 8.9512, 125.5350),
-  ('a1000000-0000-0000-0000-000000000003', 'Purok 3 - Mabini', 
+  ('a1000000-0000-0000-0000-000000000003', 'Barangay Mabini', 
    'Residential area near Robinsons Place', 8.9440, 125.5310),
-  ('a1000000-0000-0000-0000-000000000004', 'Purok 4 - Bonifacio', 
+  ('a1000000-0000-0000-0000-000000000004', 'Barangay Bonifacio', 
    'Area near Guingona Park and Agusan River', 8.9530, 125.5450)
 ON CONFLICT DO NOTHING;
 

@@ -6,7 +6,7 @@
         <v-form ref="formRef" v-model="valid" @submit.prevent="handleSave">
           <v-text-field v-model="form.full_name" label="Full Name *" :rules="[rules.required]" class="mb-2" />
           <v-text-field v-model="form.phone" label="Phone" class="mb-2" />
-          <v-select v-model="form.purok_id" :items="puroks" label="Purok" item-title="name" item-value="id" clearable class="mb-2" />
+          <v-select v-model="form.purok_id" :items="puroks" label="Barangay" item-title="name" item-value="id" clearable class="mb-2" />
           <v-text-field v-model="form.address" label="Address" hint="Enter address then click Geocode, or place pin on map" persistent-hint class="mb-1" />
 
           <v-btn variant="tonal" color="info" size="small" :loading="geocoding" @click="handleGeocode" class="mb-4">

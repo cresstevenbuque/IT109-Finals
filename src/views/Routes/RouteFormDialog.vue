@@ -5,7 +5,7 @@
       <v-card-text>
         <v-form ref="formRef" v-model="valid" @submit.prevent="handleSave">
           <v-text-field v-model="form.name" label="Route Name *" :rules="[rules.required]" class="mb-2" />
-          <v-select v-model="form.purok_id" :items="puroks" label="Purok" item-title="name" item-value="id" clearable class="mb-2" />
+          <v-select v-model="form.purok_id" :items="puroks" label="Barangay" item-title="name" item-value="id" clearable class="mb-2" />
           <v-select v-model="form.truck_id" :items="truckOptions" label="Assign Truck" item-title="plate_no" item-value="id" clearable class="mb-2" />
           <v-select v-model="form.collector_id" :items="collectorOptions" label="Assign Collector" item-title="full_name" item-value="id" clearable class="mb-2" />
 

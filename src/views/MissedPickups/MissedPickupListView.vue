@@ -100,7 +100,7 @@ watch(previewPhoto, (v) => { if (v) showPreview.value = true })
 const headers = [
   { title: 'Date', key: 'report_date', sortable: false },
   { title: 'Resident', key: 'resident', sortable: false },
-  { title: 'Purok', key: 'purok', sortable: false },
+  { title: 'Barangay', key: 'purok', sortable: false },
   { title: 'Description', key: 'description', sortable: false },
   { title: 'Photo', key: 'photo_url', sortable: false },
   { title: 'Status', key: 'status', sortable: false },

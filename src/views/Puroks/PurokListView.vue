@@ -3,11 +3,11 @@
     <!-- Page Header -->
     <div class="d-flex align-center justify-space-between mb-6">
       <div>
-        <h1 class="text-h4 font-weight-bold">Puroks</h1>
+        <h1 class="text-h4 font-weight-bold">Barangays</h1>
         <p class="text-medium-emphasis mt-1">Manage barangay zones and subdivisions</p>
       </div>
       <v-btn color="primary" prepend-icon="mdi-plus" @click="openCreate">
-        Add Purok
+        Add Barangay
       </v-btn>
     </div>
 
@@ -16,7 +16,7 @@
       <v-text-field
         v-model="search"
         prepend-inner-icon="mdi-magnify"
-        label="Search puroks..."
+        label="Search barangays..."
         clearable
         hide-details
         @update:modelValue="debouncedFetch"
@@ -57,9 +57,9 @@
         <template #no-data>
           <div class="text-center py-8">
             <v-icon size="64" color="grey-lighten-1" class="mb-4">mdi-map-marker-radius</v-icon>
-            <p class="text-h6 text-medium-emphasis">No puroks found</p>
-            <p class="text-body-2 text-medium-emphasis mb-4">Get started by adding your first purok</p>
-            <v-btn color="primary" prepend-icon="mdi-plus" @click="openCreate">Add Purok</v-btn>
+            <p class="text-h6 text-medium-emphasis">No barangays found</p>
+            <p class="text-body-2 text-medium-emphasis mb-4">Get started by adding your first barangay</p>
+            <v-btn color="primary" prepend-icon="mdi-plus" @click="openCreate">Add Barangay</v-btn>
           </div>
         </template>
       </v-data-table-server>
@@ -143,14 +143,14 @@ function openEdit(purok) {
 
 async function handleDelete(purok) {
   const ok = await confirm({
-    title: 'Delete Purok',
+    title: 'Delete Barangay',
     message: `Are you sure you want to delete "${purok.name}"? This will unlink any associated routes and residents.`,
   })
   if (!ok) return
 
   try {
     await deletePurok(purok.id)
-    showSnackbar('Purok deleted successfully')
+    showSnackbar('Barangay deleted successfully')
     loadPuroks()
   } catch (err) {
     showSnackbar(err.message, 'error')

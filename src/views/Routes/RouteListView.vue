@@ -14,7 +14,7 @@
           <v-text-field v-model="search" prepend-inner-icon="mdi-magnify" label="Search routes..." clearable hide-details @update:modelValue="debouncedFetch" />
         </v-col>
         <v-col cols="12" md="6">
-          <v-select v-model="purokFilter" :items="purokOptions" label="Filter by Purok" clearable hide-details item-title="name" item-value="id" @update:modelValue="loadRoutes" />
+          <v-select v-model="purokFilter" :items="purokOptions" label="Filter by Barangay" clearable hide-details item-title="name" item-value="id" @update:modelValue="loadRoutes" />
         </v-col>
       </v-row>
     </v-card>
@@ -97,7 +97,7 @@ const purokOptions = ref([])
 const headers = [
   { title: '', key: 'color', sortable: false, width: '40px' },
   { title: 'Route Name', key: 'name', sortable: false },
-  { title: 'Purok', key: 'purok', sortable: false },
+  { title: 'Barangay', key: 'purok', sortable: false },
   { title: 'Truck', key: 'truck', sortable: false },
   { title: 'Collector', key: 'collector', sortable: false },
   { title: 'Actions', key: 'actions', sortable: false, align: 'end', width: '160px' },

@@ -3,7 +3,7 @@
     <div class="d-flex align-center justify-space-between mb-6">
       <div>
         <h1 class="text-h4 font-weight-bold">Residents</h1>
-        <p class="text-medium-emphasis mt-1">Manage resident profiles and purok assignments</p>
+        <p class="text-medium-emphasis mt-1">Manage resident profiles and barangay assignments</p>
       </div>
       <v-btn variant="tonal" color="primary" prepend-icon="mdi-download" @click="exportCSV">Export CSV</v-btn>
     </div>
@@ -14,7 +14,7 @@
           <v-text-field v-model="search" prepend-inner-icon="mdi-magnify" label="Search residents..." clearable hide-details @update:modelValue="debouncedFetch" />
         </v-col>
         <v-col cols="12" md="6">
-          <v-select v-model="purokFilter" :items="purokOptions" label="Filter by Purok" clearable hide-details item-title="name" item-value="id" @update:modelValue="loadResidents" />
+          <v-select v-model="purokFilter" :items="purokOptions" label="Filter by Barangay" clearable hide-details item-title="name" item-value="id" @update:modelValue="loadResidents" />
         </v-col>
       </v-row>
     </v-card>
@@ -82,7 +82,7 @@ const headers = [
   { title: 'Full Name', key: 'full_name', sortable: false },
   { title: 'Phone', key: 'phone', sortable: false },
   { title: 'Address', key: 'address', sortable: false },
-  { title: 'Purok', key: 'purok', sortable: false },
+  { title: 'Barangay', key: 'purok', sortable: false },
   { title: 'Location', key: 'coords', sortable: false },
   { title: 'Actions', key: 'actions', sortable: false, align: 'end', width: '80px' },
 ]
